@@ -13,7 +13,7 @@ docker.service override to allow sharing mount point between container and host
 
     $ sudo systemctl edit docker
 
-    # /etc/systemcl/system/docker.service.d/override.conf
+    # /etc/systemd/system/docker.service.d/override.conf
     [Service]
     MountFlags=shared
 
