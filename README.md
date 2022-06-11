@@ -8,8 +8,20 @@ This small project is based on Alessandro Strada's work at https://github.com/as
     docker build -t <tag> .
 
 ## Configuration
+
+docker.service override to allow sharing mount point between container and host
+
+    $ sudo systemctl edit docker
+
+    # /etc/systemcl/system/docker.service.d/override.conf
+    [Service]
+    MountFlags=shared
+
+    $ sudo systemctl restart docker
+
 **.env**
 
+    # place your client ID and secret from Google Developer Console
     CLIENT_ID=
     SECRET=
 
