@@ -1,14 +1,12 @@
 #!/bin/sh
-eval $(opam env)
-
-if [[ -f ~/.gdfuse/default/config/state ]]; then
-	google-drive-ocamlfuse -debug -log_to - /mnt
+if [[ -f $HOME/.gdfuse/default/state ]]; then
+	google-drive-ocamlfuse -debug -log_to - $HOME/gdrive
 else
 	google-drive-ocamlfuse -headless -id ${CLIENT_ID} -secret ${SECRET}
 
 	if [[ "$?" == "0" ]]; then
-		google-drive-ocamlfuse -debug -log_to - /mnt
+		google-drive-ocamlfuse -debug -log_to - $HOME/gdrive
 	else
-		exit 1
+		/bin/sh
 	fi
 fi
