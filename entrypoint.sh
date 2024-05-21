@@ -16,6 +16,7 @@ if [ -f "$HOME/.gdfuse/default/state" ]; then
         REQUEST_TOKEN="true"
     fi
 else
+    printf "No state file found. Requesting authentication token...\n"
     REQUEST_TOKEN="true"
 fi
 
