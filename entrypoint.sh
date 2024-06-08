@@ -5,7 +5,7 @@ if [ -f "$HOME/.gdfuse/default/state" ]; then
     if [ -n "$ACCESS_TOKEN" ]; then
         if wget "https://oauth2.googleapis.com/tokeninfo?access_token=${ACCESS_TOKEN}" -O /dev/null --quiet; then
             printf "Access token still valid. Mounting filesystem on %s.\n" "$HOME/gdrive"
-            google-drive-ocamlfuse -f -verbose "$HOME/gdrive"
+            google-drive-ocamlfuse -f "$HOME/gdrive"
         else
             printf "Access token no longer valid. Revalidating...\n"
             rm -f "$HOME/.gdfuse/default/state"
@@ -21,7 +21,7 @@ else
 fi
 
 if [ "$REQUEST_TOKEN" = "true" ]; then
-    if google-drive-ocamlfuse -headless -debug -log_to - -id "$CLIENT_ID" -secret "$SECRET"; then
-        google-drive-ocamlfuse -f -verbose "$HOME/gdrive"
+    if google-drive-ocamlfuse -headless -log_to - -id "$CLIENT_ID" -secret "$SECRET"; then
+        google-drive-ocamlfuse -f "$HOME/gdrive"
     fi
 fi
