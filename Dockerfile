@@ -14,7 +14,7 @@ RUN apk add --no-cache fuse libgmpxx sqlite-libs libcurl libressl ncurses-libs
 COPY --from=builder /root/.opam/default/bin/google-drive-ocamlfuse /bin/google-drive-ocamlfuse
 ARG UID=1000
 ARG GID=1000
-ARG HOME=/var/lib/gdfuse
+ENV HOME=/var/lib/gdfuse
 WORKDIR $HOME
 COPY config $HOME/.gdfuse/default/config
 RUN addgroup -g $UID gdfuse \
