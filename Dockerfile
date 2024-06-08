@@ -23,3 +23,4 @@ RUN addgroup -g $UID gdfuse \
     && chown -R $UID:$GID $HOME
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["google-drive-ocamlfuse", "-headless", "-f", "/var/lib/gdfuse/gdrive"]
